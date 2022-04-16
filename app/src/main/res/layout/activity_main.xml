@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Search bar -->
+    <!-- Search bar
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,11 +15,22 @@
         android:drawableLeft="@drawable/ic_baseline_search_24"
         android:drawablePadding="10dp"
         android:hint="@string/search"
-        android:padding="15dp" />
+        android:padding="15dp" /> -->
+
+    <SearchView
+        android:id="@+id/searchbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/bg_rounded_searchbar"
+        android:iconifiedByDefault="false"
+        android:queryHint="Keresés" />
+
     <!-- Categories -->
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/categoriesBar"
         android:layout_below="@id/searchbar"
         android:fillViewport="true">
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -67,6 +78,15 @@
 
     </HorizontalScrollView>
 
+    <TextView
+        android:id="@+id/CategoryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/categoriesBar"
+        android:layout_margin="20dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="Pizzák" />
 
 
 </RelativeLayout>
