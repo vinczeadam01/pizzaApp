@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Search bar -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:id="@+id/searchbar"
+        android:background="@drawable/bg_rounded_searchbar"
+        android:drawableLeft="@drawable/ic_baseline_search_24"
+        android:drawablePadding="10dp"
+        android:hint="@string/search"
+        android:padding="15dp" />
+    <!-- Categories -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchbar"
+        android:fillViewport="true">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button1"
+                android:id="@+id/button"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="#358a32" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button2"
+                android:id="@+id/button2"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="#0058b6" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button3"
+                android:id="@+id/button3"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="#0058b6" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button4"
+                android:id="@+id/button4"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="#0058b6" />
+
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+
+</RelativeLayout>

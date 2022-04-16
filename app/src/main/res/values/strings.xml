@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PizzaApp</string>
+    <string name="login">BEJELENTKEZÉS</string>
+    <string name="if_hasnt_account_signup">Ha még nincs fiókod regisztrálj egyet!</string>
+    <string name="email">Email</string>
+    <string name="password">Jelszó</string>
+    <string name="signup">Regisztráció</string>
+    <string name="lastname">Vezetéknév</string>
+    <string name="firstname">Keresztnév</string>
+    <string name="passwordConfirm">Jelszó megerősítése</string>
+    <string name="search">Keresés</string>
+</resources>
