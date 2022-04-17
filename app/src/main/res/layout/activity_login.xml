@@ -51,6 +51,7 @@
                 android:background="@drawable/bg_rounded_edittext"
                 android:drawableLeft="@drawable/ic_baseline_person_outline_24"
                 android:drawablePadding="10dp"
+                android:inputType="textEmailAddress"
                 android:hint="@string/email"
                 android:padding="20dp" />
 
@@ -67,6 +68,7 @@
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="10dp"
                 android:hint="@string/password"
+                android:inputType="textPassword"
                 android:padding="20dp" />
 
             <Button
