@@ -9,4 +9,6 @@
     <string name="firstname">Keresztnév</string>
     <string name="passwordConfirm">Jelszó megerősítése</string>
     <string name="search">Keresés</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

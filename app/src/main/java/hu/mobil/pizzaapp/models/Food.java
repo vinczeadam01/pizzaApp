@@ -15,6 +15,14 @@ public class Food {
         this.imageSrc = imageSrc;
     }
 
+    public Food(Food food) {
+        this.category = food.category;
+        this.name = food.name;
+        this.description = food.description;
+        this.price = food.price;
+        this.imageSrc = food.imageSrc;
+    }
+
     public String getCategory() {
         return category;
     }

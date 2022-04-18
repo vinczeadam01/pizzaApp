@@ -23,8 +23,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.PizzaAppWActionBar"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity android:name=".SignupActivity" />
     </application>
 

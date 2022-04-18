@@ -1,49 +1,41 @@
 package hu.mobil.pizzaapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-import hu.mobil.pizzaapp.adapters.FoodAdapter;
 import hu.mobil.pizzaapp.models.Food;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String LOG_TAG = MainActivity.class.getName();
 
-    // Member variables.
-    private RecyclerView mRecyclerView;
-    private ArrayList<Food> mItemsData;
-    private FoodAdapter mAdapter;
+    BottomNavigationView bottomNavigationView;
+    public static ArrayList<Food> cartArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // recycle view
-        mRecyclerView = findViewById(R.id.recyclerView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        // Initialize the ArrayList that will contain the data.
-        mItemsData = new ArrayList<>();
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(R.id.foods);
 
-        // Initialize the adapter and set it to the RecyclerView.
-        mAdapter = new FoodAdapter(this, mItemsData);
-        mRecyclerView.setAdapter(mAdapter);
-
-        // Set the Layout Manager.
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-
-        // Get the data.
-        initializeData();
+        cartArrayList.clear();
 
     }
+    FoodsFragment productsFragment = new FoodsFragment();
+    CartFragment cartFragment = new CartFragment();
+    AccountFragment accountFragment = new AccountFragment();
 
 
     public void switchToDetails(View view) {
@@ -51,15 +43,20 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void initializeData() {
-        mItemsData.clear();
 
-        mItemsData.add(new Food("pizza", "Margarita", "pizzaszósz, sajt", 1590, "pizza-7.png"));
-        mItemsData.add(new Food("pizza", "Sonkás", "pizzaszósz, sonka, sajt", 1790, "pizza-7.png"));
-        mItemsData.add(new Food("pizza", "Sonka-gomba", "pizzaszósz, sonka, gomba, sajt", 1990, "pizza-7.png"));
-        mItemsData.add(new Food("pizza", "Sonka-kukorica", "pizzaszósz, sonka, kukorica, sajt", 1990, "pizza-7.png"));
-
-        // Notify the adapter of the change.
-        mAdapter.notifyDataSetChanged();
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.foods:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, productsFragment).commit();
+                return true;
+            case R.id.cart:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, cartFragment).commit();
+                return true;
+            case R.id.account:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, accountFragment).commit();
+                return true;
+        }
+        return false;
     }
 }
