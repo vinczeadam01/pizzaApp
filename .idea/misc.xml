@@ -6,6 +6,7 @@
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_counter.xml" value="0.235" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_edittext.xml" value="0.121" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_plusbtn.xml" value="0.121" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_searchbar.xml" value="0.1715" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_textview.xml" value="0.2265" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_whitebox.xml" value="0.121" />
@@ -19,7 +20,10 @@
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/activity_main.xml" value="0.2118270079435128" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/activity_signup.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/list_food.xml" value="0.4" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/mipmap-anydpi-v26/ic_facebook_logo.xml" value="0.121" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.204" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.204" />
       </map>
     </option>
   </component>

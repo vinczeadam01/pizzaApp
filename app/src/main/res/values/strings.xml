@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PizzaApp</string>
+    <string name="app_name">PizzApp</string>
     <string name="login">BEJELENTKEZÉS</string>
     <string name="if_hasnt_account_signup">Ha még nincs fiókod regisztrálj egyet!</string>
     <string name="email">Email</string>
