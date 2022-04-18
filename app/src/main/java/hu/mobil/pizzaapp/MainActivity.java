@@ -11,6 +11,7 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import hu.mobil.pizzaapp.models.Food;
 
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private static final String LOG_TAG = MainActivity.class.getName();
 
     BottomNavigationView bottomNavigationView;
-    public static ArrayList<Food> cartArrayList = new ArrayList<>();
+    private static ArrayList<Food> cartArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,5 +59,24 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
         }
         return false;
+    }
+
+    public static void addToCart(Food food) {
+        cartArrayList.add(new Food(food));
+    }
+
+    public static ArrayList<Food> listCart() {
+        return (ArrayList<Food>) cartArrayList.clone();
+    }
+
+    public static void removeFromCart(Food delFood) {
+        Iterator<Food> i = cartArrayList.iterator();
+        while (i.hasNext()) {
+            Food food = i.next(); // must be called before you can call i.remove()
+            if(food.getName().equals(delFood.getName())) {
+                i.remove();
+                break;
+            }
+        }
     }
 }

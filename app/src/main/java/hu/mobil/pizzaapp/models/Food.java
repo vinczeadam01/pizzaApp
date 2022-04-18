@@ -1,6 +1,8 @@
 package hu.mobil.pizzaapp.models;
 
-public class Food {
+import java.io.Serializable;
+
+public class Food implements Serializable {
     private String category;
     private String name;
     private String description;

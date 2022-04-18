@@ -23,27 +23,31 @@
         android:onClick="onBack"/>
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
         android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         android:src="@drawable/pizza_background"
         tools:ignore="MissingConstraints" />
 
 
-
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="600dp"
         android:background="@drawable/bg_rounded_whitebox"
-        app:layout_constraintBottom_toBottomOf="parent" >
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
             android:id="@+id/counterLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/itemName"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="250dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/bg_rounded_counter"
             android:orientation='horizontal'>
 
@@ -53,20 +57,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:backgroundTint="@android:color/transparent"
+                android:onClick="decreaseCounter"
                 android:padding="0dp"
                 android:text='-'
                 android:textSize="30dp"
-                android:textStyle="bold"
-                android:onClick="decreaseCounter"/>
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/counterNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text='1'
                 android:textColor="@color/white"
-                android:id="@+id/counterNum"
                 android:textSize="25dp" />
 
             <Button
@@ -75,54 +79,74 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@android:color/transparent"
+                android:onClick="increaseCounter"
                 android:padding="0dp"
                 android:text='+'
-                android:textSize="30dp"
-                android:onClick="increaseCounter"/>
+                android:textSize="30dp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/itemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/counterLayout"
+            android:layout_above="@+id/itemDescription"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:text="Sonkás pizza"
             android:textSize="30dp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/itemDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/itemName"
-            android:id="@+id/itemDescription"
+            android:layout_above="@id/priceandbutton"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="100dp"
             android:text="Description"
             android:textSize="20dp" />
 
-        <Button
-            android:id="@+id/orderbtn"
+
+        <LinearLayout
+            android:id="@+id/priceandbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/itemDescription"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="140dp"
-            android:background="@drawable/bg_rounded_counter"
-            android:backgroundTint="@color/red"
-            android:text="Kosárba" />
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:id="@+id/itemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:text="1690 Ft"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/orderbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_counter"
+                android:backgroundTint="@color/red"
+                android:text="Kosárba"
+                android:onClick="addToCart"/>
+
+        </LinearLayout>
+
+
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/itemImg"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="350dp"
         android:src="@drawable/pizza_7"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="150dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

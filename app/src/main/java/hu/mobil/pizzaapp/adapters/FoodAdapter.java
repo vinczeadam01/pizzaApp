@@ -1,6 +1,7 @@
 package hu.mobil.pizzaapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import hu.mobil.pizzaapp.DetailsActivity;
 import hu.mobil.pizzaapp.MainActivity;
 import hu.mobil.pizzaapp.R;
 import hu.mobil.pizzaapp.models.Food;
@@ -76,10 +78,20 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             //mItemImage = itemView.findViewById(R.id.itemImage);
             mPriceText = itemView.findViewById(R.id.price);
 
+            // Add to cart button onclick
             itemView.findViewById(R.id.add_to_cart).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    MainActivity.cartArrayList.add(new Food(currentFood));
+                    MainActivity.addToCart(new Food(currentFood));
+                }
+            });
+
+            // Card onclick
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), DetailsActivity.class);
+                    intent.putExtra("data", currentFood);
+                    itemView.getContext().startActivity(intent);
                 }
             });
 

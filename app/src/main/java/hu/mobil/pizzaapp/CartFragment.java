@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import hu.mobil.pizzaapp.adapters.CartAdapter;
 import hu.mobil.pizzaapp.adapters.FoodAdapter;
 import hu.mobil.pizzaapp.models.Food;
 
@@ -22,7 +23,7 @@ public class CartFragment extends Fragment {
     // Member variables.
     private RecyclerView mRecyclerView;
     private ArrayList<Food> mItemsData;
-    private FoodAdapter mAdapter;
+    private CartAdapter mAdapter;
 
     public CartFragment() {
         // Required empty public constructor
@@ -42,7 +43,7 @@ public class CartFragment extends Fragment {
         mItemsData = new ArrayList<>();
 
         // Initialize the adapter and set it to the RecyclerView.
-        mAdapter = new FoodAdapter(view.getContext(), mItemsData);
+        mAdapter = new CartAdapter(view.getContext(), mItemsData);
         mRecyclerView.setAdapter(mAdapter);
 
         // Set the Layout Manager.
@@ -55,6 +56,6 @@ public class CartFragment extends Fragment {
 
     private void initializeData() {
         mItemsData.clear();
-        mItemsData.addAll(MainActivity.cartArrayList);
+        mItemsData.addAll(MainActivity.listCart());
     }
 }

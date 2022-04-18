@@ -49,6 +49,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         return mCartData.size();
     }
 
+    private void refreshView() {
+        mCartData = MainActivity.listCart();
+        this.notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Member Variables for the TextViews
         private TextView mTitleText;
@@ -68,6 +73,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     // TODO: implement delete from cart func
+                    MainActivity.removeFromCart(currentFood);
+                    CartAdapter.this.refreshView();
+
                 }
             });
 
@@ -81,5 +89,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             // Load the images into the ImageView using the Glide library.
             //Glide.with(mContext).load(currentItem.getImageResource()).into(mItemImage);
         }
+
     }
 }
