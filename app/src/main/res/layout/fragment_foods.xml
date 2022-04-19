@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".FoodsFragment">
 
+
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-
 
         <SearchView
             android:id="@+id/searchbar"
@@ -98,5 +99,13 @@
 
 
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/copy_img"
+        android:src="@drawable/pizza_7"
+        android:visibility="gone" />
+
 
 </FrameLayout>

@@ -6,22 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DetailsActivity" >
 
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/white"
-        android:text="V"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        android:onClick="onBack"/>
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -29,6 +13,19 @@
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:src="@drawable/pizza_background"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        android:onClick="onBack"
+        android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
 

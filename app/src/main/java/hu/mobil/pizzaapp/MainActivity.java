@@ -18,6 +18,8 @@ import hu.mobil.pizzaapp.models.Food;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String LOG_TAG = MainActivity.class.getName();
 
+    public static View cartIconView = null;
+
     BottomNavigationView bottomNavigationView;
     private static ArrayList<Food> cartArrayList = new ArrayList<>();
 
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.foods);
+
+        cartIconView = findViewById(R.id.cart);
 
         cartArrayList.clear();
 

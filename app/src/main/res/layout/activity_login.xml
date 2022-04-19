@@ -107,7 +107,7 @@
                         android:id="@+id/fbloginbtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
+                        android:backgroundTint="@color/white"
                         android:paddingEnd="10dp"
                         android:onClick="onLoginWFacebook"
                         android:src="@drawable/fb_icon_50x50" />
@@ -116,7 +116,7 @@
                         android:id="@+id/googleoginbtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
+                        android:backgroundTint="@color/white"
                         android:paddingStart="10dp"
                         android:onClick="onLoginWGoogle"
                         android:src="@drawable/google_icon_50x50" />

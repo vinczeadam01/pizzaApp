@@ -1,12 +1,16 @@
 package hu.mobil.pizzaapp.adapters;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,11 +29,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     private ArrayList<Food> mFoodDataAll = new ArrayList<>();
     private Context mContext;
     private int lastPosition = -1;
+    private ImageView mCopyImg;
 
-    public FoodAdapter(Context context, ArrayList<Food> itemsData) {
+    public FoodAdapter(Context context, ArrayList<Food> itemsData, ImageView copyImg) {
         this.mFoodData = itemsData;
         this.mFoodDataAll = itemsData;
         this.mContext = context;
+
+        this.mCopyImg = copyImg;
     }
 
     @NonNull
@@ -49,7 +56,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
 
         if(holder.getAdapterPosition() > lastPosition) {
-            Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.slide_in_row);
+            Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.side_in);
             holder.itemView.startAnimation(animation);
             lastPosition = holder.getAdapterPosition();
         }
@@ -61,12 +68,33 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         return mFoodData.size();
     }
 
+    private void cartAnimate(View foodImageView /*, Bitmap b */) {
+        //mCopyImg.setImageBitmap(b);
+        mCopyImg.setVisibility(View.VISIBLE);
+        int[] dest = new int[2];
+        MainActivity.cartIconView.getLocationInWindow(dest);
+        int[] start = new int[2];
+        foodImageView.getLocationInWindow(start);
+        mCopyImg.setX(start[0]);
+        mCopyImg.setY(start[1]-foodImageView.getHeight());
+        AnimatorSet animSetXY = new AnimatorSet();
+        ObjectAnimator y = ObjectAnimator.ofFloat(mCopyImg, "translationY", mCopyImg.getY(), dest[1]-foodImageView.getHeight());
+        ObjectAnimator x = ObjectAnimator.ofFloat(mCopyImg, "translationX", mCopyImg.getX(), dest[0]);
+        ObjectAnimator sy = ObjectAnimator.ofFloat(mCopyImg, "scaleY", 0.8f, 0.1f);
+        ObjectAnimator sx = ObjectAnimator.ofFloat(mCopyImg, "scaleX", 0.8f, 0.1f);
+        animSetXY.playTogether(x, y, sx, sy);
+        animSetXY.setDuration(650);
+        animSetXY.start();
+        //mCopyImg.setVisibility(View.GONE);
+
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Member Variables for the TextViews
         private TextView mTitleText;
         private TextView mDescriptionText;
         private TextView mPriceText;
-        //private ImageView mItemImage;
+        private ImageView mItemImage;
         private Food currentFood;
 
         ViewHolder(View itemView) {
@@ -75,7 +103,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             // Initialize the views.
             mTitleText = itemView.findViewById(R.id.itemTitle);
             mDescriptionText = itemView.findViewById(R.id.subTitle);
-            //mItemImage = itemView.findViewById(R.id.itemImage);
+            mItemImage = itemView.findViewById(R.id.itemImage);
             mPriceText = itemView.findViewById(R.id.price);
 
             // Add to cart button onclick
@@ -83,6 +111,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     MainActivity.addToCart(new Food(currentFood));
+                    FoodAdapter.this.cartAnimate(mItemImage);
                 }
             });
 

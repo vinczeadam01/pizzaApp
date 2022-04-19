@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,8 @@ public class FoodsFragment extends Fragment {
     private ArrayList<Food> mItemsData;
     private FoodAdapter mAdapter;
 
+    private ImageView mCopyImg; //Image fly to cart
+
     public FoodsFragment() {
         // Required empty public constructor
     }
@@ -33,6 +36,10 @@ public class FoodsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_foods, container, false);
+
+        //Image fly to cart
+        mCopyImg = view.findViewById(R.id.copy_img);
+
         // recycle view
         mRecyclerView = view.findViewById(R.id.recyclerView);
 
@@ -40,7 +47,7 @@ public class FoodsFragment extends Fragment {
         mItemsData = new ArrayList<>();
 
         // Initialize the adapter and set it to the RecyclerView.
-        mAdapter = new FoodAdapter(view.getContext(), mItemsData);
+        mAdapter = new FoodAdapter(view.getContext(), mItemsData, mCopyImg);
         mRecyclerView.setAdapter(mAdapter);
 
         // Set the Layout Manager.
@@ -48,6 +55,8 @@ public class FoodsFragment extends Fragment {
 
         // Get the data.
         initializeData();
+
+
 
         return view;
     }
