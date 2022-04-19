@@ -16,6 +16,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import hu.mobil.pizzaapp.DetailsActivity;
@@ -68,8 +70,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         return mFoodData.size();
     }
 
-    private void cartAnimate(View foodImageView /*, Bitmap b */) {
-        //mCopyImg.setImageBitmap(b);
+    private void cartAnimate(ImageView foodImageView /*, Bitmap b */) {
+        mCopyImg.setImageDrawable(foodImageView.getDrawable());
         mCopyImg.setVisibility(View.VISIBLE);
         int[] dest = new int[2];
         MainActivity.cartIconView.getLocationInWindow(dest);
@@ -132,8 +134,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             mDescriptionText.setText(currentItem.getDescription());
             mPriceText.setText(Integer.toString(currentItem.getPrice()) + " Ft");
 
-            // Load the images into the ImageView using the Glide library.
-            //Glide.with(mContext).load(currentItem.getImageResource()).into(mItemImage);
+            mItemImage.setImageResource(mContext.getResources().getIdentifier(currentItem.getImageSrc(), "drawable", mContext.getPackageName()));
         }
     }
 }
