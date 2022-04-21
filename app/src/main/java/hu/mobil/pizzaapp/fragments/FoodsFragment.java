@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SearchView;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,6 +36,7 @@ public class FoodsFragment extends Fragment {
     private CollectionReference mItems;
 
     private ImageView mCopyImg; //Image fly to cart
+    private SearchView searchbar;
 
     public FoodsFragment() {
         // Required empty public constructor
@@ -46,6 +48,20 @@ public class FoodsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_foods, container, false);
+
+        searchbar = view.findViewById(R.id.searchbar);
+        searchbar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                mAdapter.getFilter().filter(s);
+                return false;
+            }
+        });
 
         //Image fly to cart
         mCopyImg = view.findViewById(R.id.copy_img);

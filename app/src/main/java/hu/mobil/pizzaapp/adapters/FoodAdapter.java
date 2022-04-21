@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,7 +27,7 @@ import hu.mobil.pizzaapp.MainActivity;
 import hu.mobil.pizzaapp.R;
 import hu.mobil.pizzaapp.models.Food;
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
+public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> implements Filterable {
     // Member variables.
     private ArrayList<Food> mFoodData = new ArrayList<>();
     private ArrayList<Food> mFoodDataAll = new ArrayList<>();
@@ -90,6 +92,42 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         //mCopyImg.setVisibility(View.GONE);
 
     }
+
+    @Override
+    public Filter getFilter() {
+        return shoppingFilter;
+    }
+
+    private Filter shoppingFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            ArrayList<Food> filteredList = new ArrayList<>();
+            FilterResults results = new FilterResults();
+
+            if (charSequence == null || charSequence.length() == 0) {
+                results.count = mFoodDataAll.size();
+                results.values = mFoodDataAll;
+            } else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+                for (Food item : mFoodDataAll) {
+                    if (item.getName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+
+                results.count = filteredList.size();
+                results.values = filteredList;
+            }
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            mFoodData = (ArrayList)filterResults.values;
+            notifyDataSetChanged();
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Member Variables for the TextViews
