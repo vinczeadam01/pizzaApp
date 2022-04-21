@@ -1,4 +1,4 @@
-package hu.mobil.pizzaapp;
+package hu.mobil.pizzaapp.fragments;
 
 import android.os.Bundle;
 
@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import hu.mobil.pizzaapp.MainActivity;
+import hu.mobil.pizzaapp.R;
 import hu.mobil.pizzaapp.adapters.CartAdapter;
 import hu.mobil.pizzaapp.adapters.FoodAdapter;
 import hu.mobil.pizzaapp.models.Food;

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -58,7 +59,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         // Member Variables for the TextViews
         private TextView mTitleText;
         private TextView mPriceText;
-        //private ImageView mItemImage;
+        private ImageView mItemImage;
         private Food currentFood;
 
         ViewHolder(View itemView) {
@@ -67,7 +68,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             // Initialize the views.
             mTitleText = itemView.findViewById(R.id.itemTitle);
             mPriceText = itemView.findViewById(R.id.price);
-            //mItemImage = itemView.findViewById(R.id.itemImage);
+            mItemImage = itemView.findViewById(R.id.itemImage);
 
             itemView.findViewById(R.id.deletebtn).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -85,8 +86,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             mTitleText.setText(currentItem.getName());
             mPriceText.setText(Integer.toString(currentItem.getPrice()) + " Ft");
 
-            // Load the images into the ImageView using the Glide library.
-            //Glide.with(mContext).load(currentItem.getImageResource()).into(mItemImage);
+            mItemImage.setImageResource(mContext.getResources().getIdentifier(currentItem.getImageSrc(), "drawable", mContext.getPackageName()));
         }
 
     }

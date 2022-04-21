@@ -1,4 +1,4 @@
-package hu.mobil.pizzaapp;
+package hu.mobil.pizzaapp.fragments;
 
 import android.os.Bundle;
 
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
+import hu.mobil.pizzaapp.R;
 import hu.mobil.pizzaapp.adapters.FoodAdapter;
 import hu.mobil.pizzaapp.models.Food;
 
@@ -26,6 +28,7 @@ public class FoodsFragment extends Fragment {
     // Member variables.
     private RecyclerView mRecyclerView;
     private ArrayList<Food> mItemsData;
+    private ArrayList<Food> mItemsDataAll;
     private FoodAdapter mAdapter;
 
     private FirebaseFirestore mFirestore;
@@ -52,6 +55,7 @@ public class FoodsFragment extends Fragment {
 
         // Initialize the ArrayList that will contain the data.
         mItemsData = new ArrayList<>();
+        mItemsDataAll = new ArrayList<>();
 
         // Initialize the adapter and set it to the RecyclerView.
         mAdapter = new FoodAdapter(view.getContext(), mItemsData, mCopyImg);
@@ -74,6 +78,7 @@ public class FoodsFragment extends Fragment {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                 Food item = document.toObject(Food.class);
                 mItemsData.add(item);
+                mItemsDataAll.add(item);
             }
 
             if (mItemsData.size() == 0) {
@@ -95,5 +100,9 @@ public class FoodsFragment extends Fragment {
         mItems.add(new Food("pizza", "Hawaii", "pizzaszósz, sonka, ananász, sajt", 1990, "pizza_1"));
         mItems.add(new Food("pizza", "Bolognai", "bolognai ragu, darálthús, sajt", 1990, "pizza_6"));
         mItems.add(new Food("pizza", "Csípős", "csípős pizzaszósz, szalámi, sajt", 1990, "pizza_3"));
+    }
+
+    public void switchCategory(String catName) {
+
     }
 }

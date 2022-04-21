@@ -14,17 +14,32 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
+import hu.mobil.pizzaapp.fragments.AccountFragment;
+import hu.mobil.pizzaapp.fragments.CartFragment;
+import hu.mobil.pizzaapp.fragments.FoodsFragment;
 import hu.mobil.pizzaapp.models.Food;
+import hu.mobil.pizzaapp.models.User;
 
+
+/*
+
+    TODO: onDestroy save cart list to database
+
+ */
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String LOG_TAG = MainActivity.class.getName();
 
     //Firebase
-    private FirebaseUser user;
+    private FirebaseUser mAuthUser;
+    private FirebaseFirestore mFirestore;
+    private CollectionReference mUserCollection;
+    private User mUser;
 
 
     public static View cartIconView = null;
@@ -38,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         //Check user if logged in
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null) {
+        mAuthUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(mAuthUser != null) {
             Log.d(LOG_TAG, "Authenticated user!");
         } else {
             Log.d(LOG_TAG, "Unauthenticated user!");
@@ -53,18 +68,33 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         cartIconView = findViewById(R.id.cart);
 
-        cartArrayList.clear();
+        mFirestore = FirebaseFirestore.getInstance();
+        mUserCollection = mFirestore.collection("Users");
+        userInit();
 
     }
+
+    private void userInit() {
+        mUserCollection.get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                if(document.get("id").equals(mAuthUser.getUid())) {
+                    mUser = document.toObject(User.class);
+                }
+            }
+
+            if(mUser == null) {
+                mUser = new User(mAuthUser.getUid(), "", "", mAuthUser.getEmail(), "photo", new HashMap<String, Integer>());
+                mUserCollection.add(mUser);
+            }
+        });
+
+
+    }
+
     FoodsFragment productsFragment = new FoodsFragment();
     CartFragment cartFragment = new CartFragment();
     AccountFragment accountFragment = new AccountFragment();
 
-
-    public void switchToDetails(View view) {
-        Intent intent = new Intent(this, DetailsActivity.class);
-        startActivity(intent);
-    }
 
 
     @Override
@@ -81,6 +111,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
         }
         return false;
+    }
+
+    public void switchCategory(View view) {
+        String catName = "";
+
+        findViewById(R.id.pizza_btn).setBackground(getDrawable(R.drawable.bg_rounded_plusbtn));
+
+        switch(view.getId()) {
+            case R.id.pizza_btn:
+                catName = "pizza";
+                break;
+            case R.id.burger_btn:
+                catName = "burger";
+                break;
+            case R.id.salad_btn:
+                catName = "salad";
+                break;
+            case R.id.drink_btn:
+                catName = "drink";
+                break;
+        }
+        productsFragment.switchCategory(catName);
     }
 
     public static void addToCart(Food food) {
