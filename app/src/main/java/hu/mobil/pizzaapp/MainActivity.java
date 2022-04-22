@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private CollectionReference mUserCollection;
     private User mUser;
 
-
+    public static BadgeDrawable cartBadge;
     public static View cartIconView = null;
 
     BottomNavigationView bottomNavigationView;
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         mUserCollection = mFirestore.collection("Users");
         userInit();
 
+        cartBadge = bottomNavigationView.getOrCreateBadge(R.id.cart);
+
+
     }
 
     private void userInit() {
@@ -86,6 +90,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 mUser = new User(mAuthUser.getUid(), "", "", mAuthUser.getEmail(), "photo", new HashMap<String, Integer>());
                 mUserCollection.add(mUser);
             }
+
+            cartBadge.setVisible(mUser.getCart().size() != 0);
+            cartBadge.setNumber(mUser.getCart().size());
         });
 
 
@@ -113,30 +120,37 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return false;
     }
 
+    //TODO: set the inactive button back to white
     public void switchCategory(View view) {
         String catName = "";
-
-        findViewById(R.id.pizza_btn).setBackground(getDrawable(R.drawable.bg_rounded_plusbtn));
 
         switch(view.getId()) {
             case R.id.pizza_btn:
                 catName = "pizza";
+                findViewById(R.id.pizza_btn).setBackground(getDrawable(R.drawable.bg_rounded_plusbtn));
                 break;
             case R.id.burger_btn:
                 catName = "burger";
+                findViewById(R.id.burger_btn).setBackground(getDrawable(R.drawable.bg_rounded_plusbtn));
                 break;
             case R.id.salad_btn:
                 catName = "salad";
+                findViewById(R.id.salad_btn).setBackground(getDrawable(R.drawable.bg_rounded_plusbtn));
                 break;
             case R.id.drink_btn:
                 catName = "drink";
+                findViewById(R.id.drink_btn).setBackground(getDrawable(R.drawable.bg_rounded_plusbtn));
                 break;
         }
-        productsFragment.switchCategory(catName);
+        productsFragment.getAdapter().switchCategory(catName);
     }
 
     public static void addToCart(Food food) {
         cartArrayList.add(new Food(food));
+        int cartNum = cartBadge.getNumber();
+        if (cartNum == 0)
+            cartBadge.setVisible(true);
+        cartBadge.setNumber(cartNum + 1);
     }
 
     public static ArrayList<Food> listCart() {
@@ -149,7 +163,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             Food food = i.next(); // must be called before you can call i.remove()
             if(food.getName().equals(delFood.getName())) {
                 i.remove();
-                break;
+                int cartNum = cartBadge.getNumber();
+                if (cartNum == 1)
+                    cartBadge.setVisible(true);
+                cartBadge.setNumber(cartNum - 1);
             }
         }
     }

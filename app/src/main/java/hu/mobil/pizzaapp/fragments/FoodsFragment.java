@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
@@ -37,6 +38,7 @@ public class FoodsFragment extends Fragment {
 
     private ImageView mCopyImg; //Image fly to cart
     private SearchView searchbar;
+    private HorizontalScrollView categoriesBar;
 
     public FoodsFragment() {
         // Required empty public constructor
@@ -49,6 +51,7 @@ public class FoodsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_foods, container, false);
 
+        categoriesBar = view.findViewById(R.id.categoriesBar);
         searchbar = view.findViewById(R.id.searchbar);
         searchbar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -58,6 +61,12 @@ public class FoodsFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                if(s.length() > 0) {
+                    categoriesBar.setVisibility(View.GONE);
+                }
+                else {
+                    categoriesBar.setVisibility(View.VISIBLE);
+                }
                 mAdapter.getFilter().filter(s);
                 return false;
             }
@@ -120,5 +129,9 @@ public class FoodsFragment extends Fragment {
 
     public void switchCategory(String catName) {
 
+    }
+
+    public FoodAdapter getAdapter() {
+        return mAdapter;
     }
 }

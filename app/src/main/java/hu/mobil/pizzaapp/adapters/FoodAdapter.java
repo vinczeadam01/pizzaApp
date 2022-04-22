@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import hu.mobil.pizzaapp.DetailsActivity;
 import hu.mobil.pizzaapp.MainActivity;
 import hu.mobil.pizzaapp.R;
+import hu.mobil.pizzaapp.fragments.FoodsFragment;
 import hu.mobil.pizzaapp.models.Food;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> implements Filterable {
@@ -95,10 +96,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> im
 
     @Override
     public Filter getFilter() {
-        return shoppingFilter;
+        return foodsFilter;
     }
 
-    private Filter shoppingFilter = new Filter() {
+    public void switchCategory(String categoryName) {
+        this.foodsFilter.filter(categoryName);
+    }
+
+    private Filter foodsFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
             ArrayList<Food> filteredList = new ArrayList<>();
@@ -110,7 +115,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> im
             } else {
                 String filterPattern = charSequence.toString().toLowerCase().trim();
                 for (Food item : mFoodDataAll) {
-                    if (item.getName().toLowerCase().contains(filterPattern)) {
+                    if (item.getName().toLowerCase().contains(filterPattern) || item.getCategory().contains((filterPattern))) {
                         filteredList.add(item);
                     }
                 }
@@ -121,6 +126,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> im
 
             return results;
         }
+
 
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {

@@ -27,57 +27,56 @@
 
         <!-- Categories -->
         <HorizontalScrollView
+            android:id="@+id/categoriesBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/categoriesBar"
             android:layout_below="@id/searchbar"
             android:fillViewport="true">
+
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:layout_width="120dp"
-                    android:layout_height="60dp"
-                    android:scaleType="centerInside"
                     android:id="@+id/pizza_btn"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/pizza_btn"
-                    android:onClick="switchCategory"/>
-
-                <ImageButton
                     android:layout_width="120dp"
                     android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:onClick="switchCategory"
                     android:scaleType="centerInside"
+                    android:src="@drawable/pizza_btn" />
+
+                <ImageButton
                     android:id="@+id/burger_btn"
-                    android:layout_marginRight="10dp"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
                     android:layout_marginLeft="20dp"
-                    android:src="@drawable/pizza_btn"
-                    android:onClick="switchCategory"/>
+                    android:layout_marginRight="10dp"
+                    android:onClick="switchCategory"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/pizza_btn" />
 
                 <ImageButton
-                    android:layout_width="120dp"
-                    android:layout_height="60dp"
-                    android:scaleType="centerInside"
                     android:id="@+id/salad_btn"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/pizza_btn"
-                    android:onClick="switchCategory"/>
-
-                <ImageButton
                     android:layout_width="120dp"
                     android:layout_height="60dp"
-                    android:scaleType="centerInside"
-                    android:id="@+id/drink_btn"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/pizza_btn"
-                    android:onClick="switchCategory"/>
+                    android:layout_marginRight="10dp"
+                    android:onClick="switchCategory"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/pizza_btn" />
 
-
+                <ImageButton
+                    android:id="@+id/drink_btn"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:onClick="switchCategory"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/pizza_btn" />
 
 
             </LinearLayout>
