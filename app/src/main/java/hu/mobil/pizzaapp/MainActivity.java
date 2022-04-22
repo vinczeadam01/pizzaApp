@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,6 +36,10 @@ import hu.mobil.pizzaapp.models.User;
  */
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String LOG_TAG = MainActivity.class.getName();
+    private static MainActivity thisActivity;
+    public static MainActivity getAcitivity() {
+        return thisActivity;
+    }
 
     //Firebase
     private FirebaseUser mAuthUser;
@@ -48,10 +53,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     BottomNavigationView bottomNavigationView;
     private static ArrayList<Food> cartArrayList = new ArrayList<>();
 
+    // Fragments
+    FoodsFragment productsFragment = new FoodsFragment(this);
+    CartFragment cartFragment = new CartFragment();
+    AccountFragment accountFragment = new AccountFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        thisActivity = this;
 
         //Check user if logged in
         mAuthUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -87,20 +98,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
 
             if(mUser == null) {
-                mUser = new User(mAuthUser.getUid(), "", "", mAuthUser.getEmail(), "photo", new HashMap<String, Integer>());
-                mUserCollection.add(mUser);
+                mUser = new User(mAuthUser.getUid(), "", "", mAuthUser.getEmail(), "", "photo", new HashMap<String, Integer>());
+                mUserCollection.document(mAuthUser.getUid()).set(mUser);;
             }
 
             cartBadge.setVisible(mUser.getCart().size() != 0);
             cartBadge.setNumber(mUser.getCart().size());
+
+            accountFragment.updateUser();
         });
 
 
     }
 
-    FoodsFragment productsFragment = new FoodsFragment();
-    CartFragment cartFragment = new CartFragment();
-    AccountFragment accountFragment = new AccountFragment();
 
 
 
@@ -145,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         productsFragment.getAdapter().switchCategory(catName);
     }
 
-    public static void addToCart(Food food) {
+    public void addToCart(Food food) {
         cartArrayList.add(new Food(food));
         int cartNum = cartBadge.getNumber();
         if (cartNum == 0)
@@ -157,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return (ArrayList<Food>) cartArrayList.clone();
     }
 
-    public static void removeFromCart(Food delFood) {
+    public void removeFromCart(Food delFood) {
         Iterator<Food> i = cartArrayList.iterator();
         while (i.hasNext()) {
             Food food = i.next(); // must be called before you can call i.remove()
@@ -169,5 +179,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 cartBadge.setNumber(cartNum - 1);
             }
         }
+    }
+
+    public User getUser() {
+        return this.mUser;
+    }
+
+    private void updateUser() {
+        mUserCollection.document(mUser.getId()).set(mUser);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        updateUser();
     }
 }

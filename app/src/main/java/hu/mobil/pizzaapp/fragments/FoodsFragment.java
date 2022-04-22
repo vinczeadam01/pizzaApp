@@ -20,9 +20,11 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
+import hu.mobil.pizzaapp.MainActivity;
 import hu.mobil.pizzaapp.R;
 import hu.mobil.pizzaapp.adapters.FoodAdapter;
 import hu.mobil.pizzaapp.models.Food;
+import hu.mobil.pizzaapp.models.User;
 
 
 public class FoodsFragment extends Fragment {
@@ -36,12 +38,14 @@ public class FoodsFragment extends Fragment {
     private FirebaseFirestore mFirestore;
     private CollectionReference mItems;
 
+    private MainActivity mMainContext;
+
     private ImageView mCopyImg; //Image fly to cart
     private SearchView searchbar;
     private HorizontalScrollView categoriesBar;
 
-    public FoodsFragment() {
-        // Required empty public constructor
+    public FoodsFragment(MainActivity context) {
+        mMainContext = context;
     }
 
 
@@ -83,7 +87,7 @@ public class FoodsFragment extends Fragment {
         mItemsDataAll = new ArrayList<>();
 
         // Initialize the adapter and set it to the RecyclerView.
-        mAdapter = new FoodAdapter(view.getContext(), mItemsData, mCopyImg);
+        mAdapter = new FoodAdapter(view.getContext(), mItemsData, mCopyImg, mMainContext);
         mRecyclerView.setAdapter(mAdapter);
 
         // Set the Layout Manager.

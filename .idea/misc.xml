@@ -6,6 +6,7 @@
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_counter.xml" value="0.235" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_edittext.xml" value="0.121" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_image.xml" value="0.268" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_plusbtn.xml" value="0.121" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_searchbar.xml" value="0.1715" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_textview.xml" value="0.2265" />
@@ -23,7 +24,7 @@
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/activity_main_frag.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/activity_signup.xml" value="0.20521590423257802" />
-        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/fragment_account.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/fragment_account.xml" value="0.35901386748844377" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/fragment_cart.xml" value="0.1" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/fragment_foods.xml" value="0.31030701754385964" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/fragment_products.xml" value="0.1" />

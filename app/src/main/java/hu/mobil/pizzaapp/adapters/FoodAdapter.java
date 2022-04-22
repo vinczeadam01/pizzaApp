@@ -35,11 +35,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> im
     private Context mContext;
     private int lastPosition = -1;
     private ImageView mCopyImg;
+    private MainActivity mMainContext;
 
-    public FoodAdapter(Context context, ArrayList<Food> itemsData, ImageView copyImg) {
+    public FoodAdapter(Context context, ArrayList<Food> itemsData, ImageView copyImg, MainActivity mainContext) {
         this.mFoodData = itemsData;
         this.mFoodDataAll = itemsData;
         this.mContext = context;
+        this.mMainContext = mainContext;
 
         this.mCopyImg = copyImg;
     }
@@ -156,7 +158,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> im
             itemView.findViewById(R.id.add_to_cart).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    MainActivity.addToCart(new Food(currentFood));
+                    mMainContext.addToCart(currentFood);
                     FoodAdapter.this.cartAnimate(mItemImage);
                 }
             });

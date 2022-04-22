@@ -72,7 +72,8 @@ public class DetailsActivity extends AppCompatActivity {
 
     public void addToCart(View view) {
         for(int i = 0; i < counter; i++) {
-            MainActivity.addToCart(new Food(data));
+            //MainActivity.addToCart(new Food(data));
+            MainActivity.getAcitivity().addToCart(new Food(data));
             cartAnimate();
         }
     }

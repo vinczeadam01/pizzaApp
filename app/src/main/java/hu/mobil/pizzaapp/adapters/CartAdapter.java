@@ -73,7 +73,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             itemView.findViewById(R.id.deletebtn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    MainActivity.removeFromCart(currentFood);
+                    MainActivity.getAcitivity().removeFromCart(currentFood);
                     CartAdapter.this.refreshView();
 
                 }
