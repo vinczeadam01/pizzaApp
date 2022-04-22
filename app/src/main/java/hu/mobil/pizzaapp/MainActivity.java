@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -98,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
 
             if(mUser == null) {
-                mUser = new User(mAuthUser.getUid(), "", "", mAuthUser.getEmail(), "", "photo", new HashMap<String, Integer>());
+                mUser = new User(mAuthUser.getUid(), "", "", mAuthUser.getEmail(), "", "default", new HashMap<String, Integer>());
                 mUserCollection.document(mAuthUser.getUid()).set(mUser);;
             }
 
@@ -111,8 +113,29 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     }
 
+    boolean doubleBackToExitPressedOnce = false;
 
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
 
+        //back to Foods fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, productsFragment).commit();
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Kilépéshez lépj vissza mégegyszer!", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

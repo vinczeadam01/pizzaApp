@@ -5,9 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AccountFragment">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
         <RelativeLayout
             android:id="@+id/profileLayout"
