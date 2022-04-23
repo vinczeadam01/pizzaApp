@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.CartFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layoutAnimation="@anim/cart_layout_animation"
-        android:scrollbars="vertical" />
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:id="@+id/emptycartTV"
+        android:layout_margin="30dp"
+        android:text="@string/the_cart_is_empty"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutAnimation="@anim/cart_layout_animation"
+            android:paddingBottom="80dp"
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <Button
+            android:id="@+id/orderbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Tovább"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

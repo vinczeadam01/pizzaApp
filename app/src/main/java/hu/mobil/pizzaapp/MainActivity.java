@@ -3,13 +3,14 @@ package hu.mobil.pizzaapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeDrawable;
@@ -158,23 +159,40 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     //TODO: set the inactive button back to white
     public void switchCategory(View view) {
         String catName = "";
+        Button pizzaBtn = findViewById(R.id.pizza_btn);
+        Button burgerBtn = findViewById(R.id.burger_btn);
+        Button saladBtn = findViewById(R.id.salad_btn);
+        Button drinkBtn = findViewById(R.id.drink_btn);
+
 
         switch(view.getId()) {
             case R.id.pizza_btn:
                 catName = "pizza";
-                findViewById(R.id.pizza_btn).setBackground(getDrawable(R.drawable.bg_rounded_plusbtn));
+                pizzaBtn.setBackground(getDrawable(R.drawable.category_button_active));
+                burgerBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
+                saladBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
+                drinkBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
                 break;
             case R.id.burger_btn:
                 catName = "burger";
-                findViewById(R.id.burger_btn).setBackground(getDrawable(R.drawable.bg_rounded_plusbtn));
+                pizzaBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
+                burgerBtn.setBackground(getDrawable(R.drawable.category_button_active));
+                saladBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
+                drinkBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
                 break;
             case R.id.salad_btn:
                 catName = "salad";
-                findViewById(R.id.salad_btn).setBackground(getDrawable(R.drawable.bg_rounded_plusbtn));
+                pizzaBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
+                burgerBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
+                saladBtn.setBackground(getDrawable(R.drawable.category_button_active));
+                drinkBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
                 break;
             case R.id.drink_btn:
                 catName = "drink";
-                findViewById(R.id.drink_btn).setBackground(getDrawable(R.drawable.bg_rounded_plusbtn));
+                pizzaBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
+                burgerBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
+                saladBtn.setBackground(getDrawable(R.drawable.category_button_inactive));
+                drinkBtn.setBackground(getDrawable(R.drawable.category_button_active));
                 break;
         }
         productsFragment.getAdapter().switchCategory(catName);
@@ -202,6 +220,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 if (cartNum == 1)
                     cartBadge.setVisible(true);
                 cartBadge.setNumber(cartNum - 1);
+                break;
             }
         }
     }
@@ -230,5 +249,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     public void onLogout(View view) {
         finish();
+    }
+
+    public void cleanCart() {
+        cartArrayList.clear();
+        cartBadge.setNumber(0);
+        cartFragment.rebuildAdapter();
     }
 }

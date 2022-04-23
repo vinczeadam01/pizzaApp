@@ -6,7 +6,6 @@
     tools:context=".fragments.FoodsFragment">
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,54 +28,79 @@
         <HorizontalScrollView
             android:id="@+id/categoriesBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_below="@id/searchbar"
-            android:fillViewport="true">
+            android:fillViewport="true"
+            android:scrollbarSize="1dp">
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/pizza_btn"
                     android:layout_width="120dp"
-                    android:layout_height="60dp"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:onClick="switchCategory"
                     android:scaleType="centerInside"
-                    android:src="@drawable/pizza_btn" />
+                    android:drawableLeft="@drawable/pizza_icon_24"
+                    android:gravity="left|center_vertical"
+                    android:drawablePadding="20dp"
+                    android:paddingStart="10dp"
+                    android:text="Pizza"
+                    android:textSize="12dp"
+                    android:background="@drawable/category_button_inactive"/>
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/burger_btn"
                     android:layout_width="120dp"
-                    android:layout_height="60dp"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="10dp"
                     android:onClick="switchCategory"
                     android:scaleType="centerInside"
-                    android:src="@drawable/pizza_btn" />
+                    android:drawableLeft="@drawable/hamburger_icon_24"
+                    android:gravity="left|center_vertical"
+                    android:text="Burger"
+                    android:textSize="12dp"
+                    android:drawablePadding="20dp"
+                    android:paddingStart="10dp"
+                    android:background="@drawable/category_button_inactive"/>
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/salad_btn"
                     android:layout_width="120dp"
-                    android:layout_height="60dp"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:onClick="switchCategory"
                     android:scaleType="centerInside"
-                    android:src="@drawable/pizza_btn" />
+                    android:drawableLeft="@drawable/salad_icon_24"
+                    android:gravity="left|center_vertical"
+                    android:text="Saláta"
+                    android:textSize="12dp"
+                    android:drawablePadding="20dp"
+                    android:paddingStart="10dp"
+                    android:background="@drawable/category_button_inactive"/>
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/drink_btn"
                     android:layout_width="120dp"
-                    android:layout_height="60dp"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:onClick="switchCategory"
                     android:scaleType="centerInside"
-                    android:src="@drawable/pizza_btn" />
+                    android:drawableLeft="@drawable/cola_icon_24"
+                    android:gravity="left|center_vertical"
+                    android:text="Ital"
+                    android:textSize="12dp"
+                    android:drawablePadding="20dp"
+                    android:paddingStart="10dp"
+                    android:background="@drawable/category_button_inactive"/>
 
 
             </LinearLayout>

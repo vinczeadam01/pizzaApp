@@ -129,6 +129,19 @@ public class FoodsFragment extends Fragment {
         mItems.add(new Food("pizza", "Hawaii", "pizzaszósz, sonka, ananász, sajt", 1990, "pizza_1"));
         mItems.add(new Food("pizza", "Bolognai", "bolognai ragu, darálthús, sajt", 1990, "pizza_6"));
         mItems.add(new Food("pizza", "Csípős", "csípős pizzaszósz, szalámi, sajt", 1990, "pizza_3"));
+
+        mItems.add(new Food("burger", "Sima", "hamburgerhús, saláta, paradicsom, szósz", 1650, "burger_basic"));
+        mItems.add(new Food("burger", "Sajtos", "hamburgerhús, saláta, paradicsom, sajt, szósz", 1790, "burger_cheese"));
+        mItems.add(new Food("burger", "Baconos", "hamburgerhús, saláta, paradicsom,sajt, bacon szósz", 2190, "burger_bacon"));
+
+        mItems.add(new Food("salad", "Paradicsomos", "saláta, paradicsom, dresszing", 1390, "salad_tomato"));
+        mItems.add(new Food("salad", "Cézár", "saláta, csirkemell, sajt, kenyér", 1590, "salad_caesar"));
+        mItems.add(new Food("salad", "Csirkés", "saláta, csirkemell, paradicsom, uborka, lilahagyma, sajt", 1880, "salad_chicken"));
+
+        mItems.add(new Food("drink", "Cola", "", 490, "drink_cola"));
+        mItems.add(new Food("drink", "Fanta", "", 490, "drink_fanta"));
+        mItems.add(new Food("drink", "Sprite", "", 490, "drink_sprite"));
+        mItems.add(new Food("drink", "Víz", "", 350, "drink_water"));
     }
 
     public void switchCategory(String catName) {

@@ -11,6 +11,9 @@
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_searchbar.xml" value="0.1715" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_textview.xml" value="0.2265" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/bg_rounded_whitebox.xml" value="0.121" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/category_button.xml" value="0.1575" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/category_button_active.xml" value="0.229" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/category_button_inactive.xml" value="0.229" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/ic_baseline_arrow_back_ios_new_24.xml" value="0.121" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.121" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/drawable/ic_baseline_mail_outline_24.xml" value="0.1715" />
@@ -25,8 +28,9 @@
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/activity_main_frag.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/activity_signup.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/activity_summary.xml" value="0.4" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/fragment_account.xml" value="0.2576312576312576" />
-        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/fragment_cart.xml" value="0.1" />
+        <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/fragment_cart.xml" value="0.176" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/fragment_foods.xml" value="0.31030701754385964" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/fragment_products.xml" value="0.1" />
         <entry key="..\:/Users/adamv/Documents/EGYETEM/IV.felev/Mobil/Pizzaapp/app/src/main/res/layout/list_cart.xml" value="0.2" />

@@ -16,16 +16,19 @@ import java.util.ArrayList;
 
 import hu.mobil.pizzaapp.MainActivity;
 import hu.mobil.pizzaapp.R;
+import hu.mobil.pizzaapp.fragments.CartFragment;
 import hu.mobil.pizzaapp.models.Food;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     // Member variables.
     private ArrayList<Food> mCartData = new ArrayList<>();
     private Context mContext;
+    private CartFragment mParent;
 
-    public CartAdapter(Context context, ArrayList<Food> itemsData) {
+    public CartAdapter(Context context, ArrayList<Food> itemsData, CartFragment parent) {
         this.mCartData = itemsData;
         this.mContext = context;
+        mParent = parent;
     }
 
     @NonNull
@@ -53,6 +56,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     private void refreshView() {
         mCartData = MainActivity.listCart();
         this.notifyDataSetChanged();
+        mParent.checkEmptyCart(mCartData.size());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
