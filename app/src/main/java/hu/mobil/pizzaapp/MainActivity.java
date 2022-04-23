@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private CollectionReference mUserCollection;
     private User mUser;
 
+    private boolean isDeleting = false;
+
     public static BadgeDrawable cartBadge;
     public static View cartIconView = null;
 
@@ -212,9 +214,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         mUserCollection.document(mUser.getId()).set(mUser);
     }
 
+    public void onDeleteAccount(View view) {
+        isDeleting = true;
+        mUserCollection.document(mUser.getId()).delete();
+        mAuthUser.delete();
+        finish();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        updateUser();
+        if(!isDeleting)
+            updateUser();
+    }
+
+    public void onLogout(View view) {
+        finish();
     }
 }
