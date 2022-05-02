@@ -12,11 +12,15 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import hu.mobil.pizzaapp.models.Food;
+import hu.mobil.pizzaapp.models.Order;
 import hu.mobil.pizzaapp.models.User;
 
 public class SummaryActivity extends AppCompatActivity {
@@ -34,6 +38,10 @@ public class SummaryActivity extends AppCompatActivity {
     private NotificationHandler mNotificatinHandeler;
 
     private User mUser;
+
+    //Firebase
+    private FirebaseFirestore mFirestore;
+    private CollectionReference mOrderCollection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +64,9 @@ public class SummaryActivity extends AppCompatActivity {
         checkbox = findViewById(R.id.save_form_check_box);
 
         formInit();
+
+        mFirestore = FirebaseFirestore.getInstance();
+        mOrderCollection = mFirestore.collection("Orders");
     }
 
     private void tableInit() {
@@ -110,6 +121,9 @@ public class SummaryActivity extends AppCompatActivity {
 
     public void order(View view) {
         mNotificatinHandeler.send("Sikeres rendelés! A futár nemsokára kopogtat!!");
+
+        mOrderCollection.add(new Order(mUser.getId(), Order.list2string(cartList), priceSum));
+
         MainActivity.getAcitivity().cleanCart();
         if (checkbox.isChecked())
             saveForm();

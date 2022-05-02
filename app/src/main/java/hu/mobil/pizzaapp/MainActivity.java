@@ -95,11 +95,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     private void userInit() {
-        mUserCollection.get().addOnSuccessListener(queryDocumentSnapshots -> {
+        mUserCollection.whereEqualTo("id", mAuthUser.getUid()).limit(1).get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                if(document.get("id").equals(mAuthUser.getUid())) {
                     mUser = document.toObject(User.class);
-                }
             }
 
             if(mUser == null) {
@@ -112,7 +110,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             accountFragment.updateUser();
         });
-
 
     }
 

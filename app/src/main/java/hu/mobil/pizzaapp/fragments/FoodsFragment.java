@@ -103,7 +103,7 @@ public class FoodsFragment extends Fragment {
 
     private void queryData() {
         mItemsData.clear();
-        mItems.orderBy("name").limit(20).get().addOnSuccessListener(queryDocumentSnapshots -> {
+        mItems.orderBy("name").limit(30).get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                 Food item = document.toObject(Food.class);
                 mItemsData.add(item);

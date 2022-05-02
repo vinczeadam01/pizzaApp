@@ -104,4 +104,10 @@ public class CartFragment extends Fragment {
         mItemsData.addAll(MainActivity.listCart());
         mAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.checkEmptyCart(mItemsData.size());
+    }
 }
