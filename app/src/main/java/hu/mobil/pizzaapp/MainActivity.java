@@ -67,6 +67,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Bundle bundle = getIntent().getExtras();
+
+        String registredFirstname = "";
+        String registredLastname = "";
+
+        registredFirstname = bundle.get("firstname").toString();
+        registredLastname = bundle.get("lastname").toString();
+
         thisActivity = this;
 
         //Check user if logged in
@@ -87,21 +96,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         mFirestore = FirebaseFirestore.getInstance();
         mUserCollection = mFirestore.collection("Users");
-        userInit();
+        userInit(registredFirstname, registredLastname);
 
         cartBadge = bottomNavigationView.getOrCreateBadge(R.id.cart);
 
 
     }
 
-    private void userInit() {
+    private void userInit(String registredFirstname, String registredLastname) {
         mUserCollection.whereEqualTo("id", mAuthUser.getUid()).limit(1).get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                     mUser = document.toObject(User.class);
             }
 
             if(mUser == null) {
-                mUser = new User(mAuthUser.getUid(), "", "", mAuthUser.getEmail(), "", "default", new HashMap<String, Integer>());
+                mUser = new User(mAuthUser.getUid(), registredFirstname, registredLastname, mAuthUser.getEmail(), "", "default", new HashMap<String, Integer>());
                 mUserCollection.document(mAuthUser.getUid()).set(mUser);;
             }
 

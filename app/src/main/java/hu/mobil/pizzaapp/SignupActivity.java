@@ -68,6 +68,8 @@ public class SignupActivity extends AppCompatActivity {
 
     private void startMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("firstname", this.firstNameEditText.getText());
+        intent.putExtra("lastname", this.lastNameEditText.getText());
         startActivity(intent);
     }
 
